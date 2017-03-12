@@ -1,4 +1,4 @@
-package main.java.config;
+package springproject.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -8,12 +8,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @ComponentScan(
-		basePackages = {"main.java"},
-		excludeFilters = {
+		basePackages={""},
+		excludeFilters={
 				@Filter(
-						type = FilterType.ANNOTATION, 
-						value = EnableWebMvc.class)
-		})
+						type=FilterType.ANNOTATION,
+						value=EnableWebMvc.class
+				)
+		}
+)
 public class RootConfig {
 	
 }

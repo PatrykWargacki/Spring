@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'org.akhikhl.gretty'
 
 repositories{
 	mavenLocal()
@@ -15,4 +16,22 @@ dependencies {
 	compile 'org.springframework:spring-webmvc:4.3.6.RELEASE'
 	compile 'org.springframework:spring-aop:4.3.6.RELEASE'
 	compile 'javax.servlet:jstl:1.2'
+
+}
+
+buildscript{
+	repositories{
+		jcenter()
+	}
+	
+	dependencies{
+		classpath 'org.akhikhl.gretty:gretty:+'
+	}
+}
+
+gretty{
+	host = "localhost"
+	httpPort = 8081
+	contextPath = "/WebProject"
+	servletContainer = 'jetty9'
 }
