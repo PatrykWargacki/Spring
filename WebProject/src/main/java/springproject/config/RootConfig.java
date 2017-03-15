@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @ComponentScan(
-		basePackages={""},
+		basePackages={"messages"},
 		excludeFilters={
 				@Filter(
 						type=FilterType.ANNOTATION,

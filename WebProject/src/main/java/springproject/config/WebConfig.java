@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("springproject")
+@ComponentScan("springproject.web")
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
 	@Bean
@@ -21,7 +21,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		resolver.setViewClass(JstlView.class);
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
-		//resolver.setExposeContextBeansAsAttributes(true);
+		resolver.setExposeContextBeansAsAttributes(true);
 		return resolver;
 	}
 	
