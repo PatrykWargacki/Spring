@@ -2,6 +2,7 @@ package springproject.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,11 +25,12 @@ public class UserController {
 	public String showRegistrationForm(){
 		return "registerForm";
 	}
-
+	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String processRegistrationForm(User user){
-		userRepository.addNewUser(user);
-		return "redirect:/user/" + user.getUserName();
+	public String processRegistrationForm(
+			@ModelAttribute("user") User user
+			){
+		return "redirect:/user/" + userRepository.addNewUser(user).getUserName();
 	}
 	
 	@RequestMapping(value="/{userName}", method=RequestMethod.GET)

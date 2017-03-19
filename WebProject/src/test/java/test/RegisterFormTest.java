@@ -1,5 +1,6 @@
 package test;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -24,10 +25,12 @@ public class RegisterFormTest {
 		
 		UserController controller = new UserController(mockRepository);
 		
-		User preUser  = new User("P","W","PW","WP");
-		User postUser = new User("P","W","PW","WP");
+		User postUser = new User(2L,"P","W","PW","WP");
 		
-		when(mockRepository.addNewUser(preUser))
+//		when(controller.processRegistrationForm(postUser))
+//			.thenReturn("/postUser");
+		
+		when(mockRepository.addNewUser(any()))
 			.thenReturn(postUser);
 		
 		MockMvc mockMvc = standaloneSetup(controller)
@@ -36,11 +39,11 @@ public class RegisterFormTest {
 		mockMvc.perform(post("/user/register")
 			.param("firstName","P")
 			.param("lastName","W")
-			.param("userName","PW")
+			.param("userName","PWE")
 			.param("password","WP"))
-			.andExpect(redirectedUrl("/user/"+postUser.getUserName()));
+			.andExpect(redirectedUrl("/user/" + postUser.getUserName()));
 		
-		verify(mockRepository, atLeastOnce()).addNewUser(preUser);
+		verify(mockRepository, atLeastOnce()).addNewUser(any());
 		
 	}
 

@@ -29,14 +29,22 @@ public class User {
 	private String password;
 	*/
 	
-	@Autowired
-	public User(String firstName, String lastName, String userName, String password){
-		id = Utilities.getNextUser();
+	public User(){
+		id = 0L;
+	}
+	
+	public User(Long id, String firstName, String lastName, String userName, String password){
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName  = lastName;
 		this.userName  = userName;
 		this.password  = password;
 	}
+
+	public User(String firstName, String lastName, String userName, String password){
+		this(Utilities.getNextUser(),firstName,lastName,userName,password);
+	}
+		
 
 	public Long getId() {
 		return id;
