@@ -1,36 +1,30 @@
 package springproject.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import springproject.data.Utilities;
+import javax.validation.constraints.*;
 
 public class User {
 	private final Long id;
-	private String firstName;
-	private String lastName;
-	private String userName;
-	private String password;
 	
-	/*
 	@NotNull
-	@Size(min=5, max=16)
+	@Size(min=5, max=16, message="{firstName.size}")
 	private String firstName;
 	
 	@NotNull
-	@Size(min=5, max=25)
+	@Size(min=5, max=25, message="{lastName.size}")
 	private String lastName;
 	
 	@NotNull
-	@Size(min=2, max=30)
+	@Size(min=2, max=30, message="{userName.size}")
 	private String userName;
 	
 	@NotNull
-	@Size(min=2, max=30)
+	@Size(min=2, max=30, message="{password.size}")
 	private String password;
-	*/
+	
 	
 	public User(){
-		id = 0L;
+		id = Utilities.getNextUser();
 	}
 	
 	public User(Long id, String firstName, String lastName, String userName, String password){
