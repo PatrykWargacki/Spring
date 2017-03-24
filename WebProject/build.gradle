@@ -13,13 +13,15 @@ targetCompatibility = 1.8
 dependencies {
 	testCompile 'org.springframework:spring-test:4.3.6.RELEASE'
 	testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-all:1.10.19'
+	testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
 	
 	compile 'org.springframework:spring-context:4.3.6.RELEASE'
 	compile 'org.springframework:spring-web:4.3.6.RELEASE'
 	compile 'org.springframework:spring-webmvc:4.3.6.RELEASE'
 	compile 'org.springframework:spring-aop:4.3.6.RELEASE'
 	compile 'javax.servlet:jstl:1.2'
-
+	compile 'javax.servlet:jsp-api:2.0'
 }
 
 buildscript{
